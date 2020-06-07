@@ -16,12 +16,9 @@ In the following section, let $p \in \Z$, $0 < p$ be a prime.
   a collection of objects $(F_n)_{n\in\N}$ in $\CC$ together with
   a collection of maps $(\fall{n}{n+1} : \map{F_{n+1}}{F_n}{}{})_{n\in \N}$
   such that for all $n \in \N$, $\fall{n}{n+1}\fall{n+1}{n+2} = \fall{n}{n+2}$.
-\end{dfn}
 
-\begin{dfn}[Surjective System]\link{dfn:surj_sys}
-  
-  Let $R$ be a commutative ring and $F$ a projective system of $R$-modules. 
-  Then $F$ is called \emph{surjective} when 
+  If $\CC$ is a subcategory of the category of sets, 
+  then $F$ is called \emph{surjective} when 
   for all $n \in \N$, $\fall{n}{n+1}$ is surjective. 
 \end{dfn}
 
@@ -31,13 +28,14 @@ In the following section, let $p \in \Z$, $0 < p$ be a prime.
   Then an \emph{inverse limit of $F$} is just 
   a limit of $F$ as an $\N\op$-diagram.
 
-  More explicitly, an inverse limit of $F$ is 
-  an object $A$ of $\CC$ together with a collection of maps 
-  $(\al_n : A \to F_n)_{n\in\N}$ such that 
-  for all $n \in \N$, $\fall{n}{n+1}\al_{n+1} = \al_n$. 
+  % More explicitly, an inverse limit of $F$ is 
+  % a pair $A$ of $\CC$ together with a collection of maps 
+  % $(\al_n : A \to F_n)_{n\in\N}$ such that 
+  % for all $n \in \N$, $\fall{n}{n+1}\al_{n+1} = \al_n$,
+  % and is terminal with respect to this property.
 \end{dfn}
 
-\begin{lem}[Left Surjective implies Right Exactness of Inverse Limit]
+\begin{prop}[Left Surjective implies Right Exactness of Inverse Limit]
   \link{prop:inv_lim:left_surj_imp_right_exact}
   
   Let $R$ be a ring and \[
@@ -56,7 +54,10 @@ In the following section, let $p \in \Z$, $0 < p$ be a prime.
   Furthermore, if $A$ is surjective, 
   then we also have exactness at $\LIM C$. 
 
-\end{lem}
+\end{prop}
+\begin{proof}
+  See \linkto{appendix}{appendix}. 
+\end{proof}
 
 \begin{dfn}[$p$-adic Integers]\link{dfn:padic}
   
@@ -65,7 +66,7 @@ In the following section, let $p \in \Z$, $0 < p$ be a prime.
   \begin{enumerate}
     \item $n \in \obj{\N\op} \mapsto \Z/p^n\Z$
     \item For $n \in \N\op$, $\fall{n}{n+1} : \map{\Z/p^{n+1}\Z}{\Z/p^n\Z}{}{}$
-    is the natural projection (from the universal property of $\Z/p^{n+1}\Z$). 
+    is the natural projection. 
   \end{enumerate}
   Then the \emph{$p$-adic integers} $\Z_p$ is defined as 
   the inverse limit of $\Z/p^\star\Z$. 
@@ -107,32 +108,9 @@ In the following section, let $p \in \Z$, $0 < p$ be a prime.
   $\bigcap_{n \in \N} p^n\Z = 0$.
 \end{prop}
 \begin{proof}
-  
-  We have a short exact sequence of projective systems of $\Z$-modules, 
-  \begin{figure}[H]
-    \centering
-    \begin{tikzcd}
-      0 \arrow[r] & p^\star\Z \arrow[r] 
-      & \underline{\Z} \arrow[r] & \Z/p^\star\Z \arrow[r] & 0
-    \end{tikzcd}
-  \end{figure}
-  where the middle projective system is a constant at $\Z$. 
-  Since \linkto{prop:inv_lim:left_surj_imp_right_exact}{
-  taking inverse limits is left exact}, we obtain the following 
-  exact sequence of $\Z$ modules : 
-  \begin{figure}[H]
-    \centering
-    \begin{tikzcd}
-      0 \arrow[r] & \LIM p^\star\Z \arrow[r] 
-      & \Z \arrow[r] & \LIM \Z/p^\star\Z
-    \end{tikzcd}
-  \end{figure} 
-  Since the forgetful functor from the category of rings to 
-  $\Z$-modules is a right adjoint functor, it preserves limits.
-  In particular, 
-  the inverse limit of $\Z/p^\star\Z$ in the category of $\Z$-modules is 
-  still $\Z_p$.
-  It is easy to check that the inverse limit of $p^\star\Z$ is the intersection.
+  See \linkto{appendix}{appendix} for cool proof. 
+  If you're not cool, you can also do this elementarily using 
+  the explicit construction of $\Z_p$.
 \end{proof}
 
 \begin{prop}[Truncation]\link{prop:padic:truncation}
@@ -251,22 +229,22 @@ In the following section, let $p \in \Z$, $0 < p$ be a prime.
 We will now give $\Z_p$ a norm that makes precise 
 the intuition that higher order terms tend to zero. 
 
-\begin{dfn}[Naturals with Infinity]\link{dfn:nat_infty}
-  
-  Let $\N^\infty := \N \sqcup \set{\infty}$.
-  Define $\leq$ on $\N^\infty$ as follows : 
-  \begin{itemize}
-    \item[--] For all $n, m \in \N^\infty\minus\set{\infty}$, 
-    $n \leq m$ is as usual. 
-    \item[--] For all $n \in \N^\infty$, $n \leq \infty$. 
-  \end{itemize}
-
-  Define $+$ on $\N$ as follows : 
-  \begin{itemize}
-    \item[--] For $n, m \in \N^\infty\minus\set{\infty}$, $n + m$ is as usual. 
-    \item[--] For $n \in \N^\infty$, $n + \infty = \infty$. 
-  \end{itemize}
-\end{dfn}
+% \begin{dfn}[Naturals with Infinity]\link{dfn:nat_infty}
+%   
+%   Let $\N^\infty := \N \sqcup \set{\infty}$.
+%   Define $\leq$ on $\N^\infty$ as follows : 
+%   \begin{itemize}
+%     \item[--] For all $n, m \in \N^\infty\minus\set{\infty}$, 
+%     $n \leq m$ is as usual. 
+%     \item[--] For all $n \in \N^\infty$, $n \leq \infty$. 
+%   \end{itemize}
+% 
+%   Define $+$ on $\N$ as follows : 
+%   \begin{itemize}
+%     \item[--] For $n, m \in \N^\infty\minus\set{\infty}$, $n + m$ is as usual. 
+%     \item[--] For $n \in \N^\infty$, $n + \infty = \infty$. 
+%   \end{itemize}
+% \end{dfn}
 
 \begin{dfn}[$p$-adic Valuation, Norm]\link{dfn:padic:val}
   
@@ -275,6 +253,8 @@ the intuition that higher order terms tend to zero.
     v_p : \map{\Z_p}{\N^\infty}{}{}, 
     x \mapsto \sup\set{n \in \N^\infty \st \ep_n(x) = 0}
   \end{align*}
+  where $\N^\infty$ is $\N\sqcup\set{\infty}$ with 
+  $\leq, +$ appropriately defined.
 
   From this, we define the \emph{$p$-adic norm}, 
   \begin{align*}
@@ -297,12 +277,9 @@ the intuition that higher order terms tend to zero.
   Let $x \in \Z_p$, $x \neq 0$. 
   Then \begin{enumerate}
     \item $v_p(x) \neq \infty$. 
-    \item Since by definition, $\ep_{v_p(x)}(x) = 0$ and 
-    multiplying by $p^{v_p(x)}$ is injective, 
-    there exists a unique $u(x) \in \Z_p$ such that $x = p^{v_p(x)}u(x)$.
-    Then $u(x) \in \Z_p^\times$
-    \item For all $n \in \N$ and $u \in \Z_p^\times$, 
-    $x = p^n u$ implies $n = v_p(x)$ and $u = u(x)$
+    \item $u_x := x p^{-v_p(x)} \in \Z_p^\times$
+    and for all $n \in \N, u \in \Z_p^\times$, 
+    $x = p^n u$ implies $n = v_p(x)$ and $u = u_x$.
   \end{enumerate}
 \end{prop}
 \begin{proof}~
@@ -313,19 +290,21 @@ the intuition that higher order terms tend to zero.
   $\ep_n(x) = 0$ is bounded above by a natural $N \in \N$. 
   Hence $v_p(x) \leq N < \infty$. 
   
-  $(2)$ Since \linkto{prop:padic:local}{$\Z_p$ is a local ring} with 
+  $(2)$ $u_x$ is well-defined since multiplying by $p^{v_p(x)}$ is 
+  \linkto{prop:padic:truncation}{injective}. 
+  Since \linkto{prop:padic:local}{$\Z_p$ is a local ring} with 
   maximal ideal $p\Z_p$, it suffices to show that 
-  $u(x) \notin p\Z_p = \ker\ep_1$. 
-  Well, if $u(x) \in p\Z_p$, then $x \in p^{v_p(x)}+1\Z_p$, 
+  $u_x \notin p\Z_p = \ker\ep_1$. 
+  Well, if $u_x \in p\Z_p$, then $x \in p^{v_p(x)+1}\Z_p$, 
   which implies $\ep_{v_p(x) + 1}(x) = 0$, 
   contradicting the maximality of $v_p(x)$. 
 
-  $(3)$ Let $n \in \N$, $u \in \Z_p^\times$ such that $x = p^n u$. 
-  Already, $x \in p^n\Z_p$ implies $n \leq v_p(x)$ by 
+  Let $n \in \N$, $u \in \Z_p^\times$ such that $x = p^n u \in \ker\ep_n$. 
+  Then $n \leq v_p(x)$ by 
   \linkto{dfn:padic:val}{definition of $v_p(x)$}. 
-  Then $u \in p^{v_p(x) - n}\Z_p$ and $u \in \Z_p^\times$
+  So $u \in p^{v_p(x) - n}\Z_p$ and $u \in \Z_p^\times$
   implies $v_p(x) = n$. 
-  Then $u = u(x)$ since multiplying by $p^{v_p(x)}$ is 
+  Then $u = u_x$ since multiplying by $p^{v_p(x)}$ is 
   \linkto{prop:padic:truncation}{injective}. 
 \end{proof}
 
@@ -336,51 +315,42 @@ the intuition that higher order terms tend to zero.
   \begin{enumerate}
     \item (Positive Definite) 
     For all $x \in \Z_p$, $\abs{x}_p = 0$ if and only if $x = 0$. 
-    \item (Ultrametric Property) 
-    For all $x, y \in \Z_p$, 
-    $\abs{x + y}_p \leq \max(\abs{x}_p,\abs{y}_p)$. 
     \item (Multiplcative)
     For $x, y \in \Z_p$, 
     $\abs{x y}_p = \abs{x}_p \abs{y}_p$. 
+    Hence $\Z_p$ is an integral domain. 
+    \item (Ultrametric Property) 
+    For all $x, y \in \Z_p$, 
+    $\abs{x + y}_p \leq \max(\abs{x}_p,\abs{y}_p)$.
+    Furthermore, $\abs{x}_p \neq \abs{y}_p$ implies equality. 
     \item (Normalized)
     $\abs{1}_p = 1$
   \end{enumerate}
   Hence $\Z_p$ is a topological ring with the topology from $\abs{\hspace{5pt}}_p$. 
 \end{prop}
-\begin{proof}~
-  
-  $(1)$ Clear. 
-
-  $(2)$ It suffices to show $\min(v_p(x),v_p(y)) \leq v_p(x + y)$. 
-  Let $n = \min(v_p(x),v_p(y))$. 
-  Then $\ep_n(x + y) = \ep_n(x) + \ep_n(y) = 0$.
-  So $n \leq v_p(x + y)$ by its maximality. 
-
-  $(3)$ It suffices to show $v_p(x y) = v_p(x) + v_p(y)$. 
-  This follows from the result on 
-  \linkto{prop:padic:decomp}{unique decomposition}.
-
-  $(4)$ $v_p(1) = 0$ since $1$ is a unit. 
-\end{proof}
-
-\begin{prop}[$\Z_p$ Integral Domain]\link{prop:padic:ID}
-  
-  For all $x, y \in \Z_p$, $x y = 0$ implies $x = 0$ or $y = 0$. 
-\end{prop}
 \begin{proof}
-  Follows from the norm being \linkto{prop:padic:normed_ring}{multipicative}
-  and $\R$ being an integral domain. 
+  Follows from \linkto{prop:padic:decomp}{unique decomposition}.
+  See \linkto{appendix}{appendix} for more details. 
 \end{proof}
-\begin{proof}(Without using the norm)
 
-  Let $x, y \in \Z_p$, $x \neq 0 \neq y$. 
-  Then $x y = p^{v_p(x) + v_p(y)} u(x) u(y)$ 
-  where $u(x), u(y) \in \Z_p^\times$ from 
-  \linkto{prop:padic:decomp}{unique decomposition}. 
-  Then $x y = 0$ yields $0 = p^{v_p(x) + v_p(y)}$, 
-  which implies $\Z$ does not \linkto{prop:padic:inject}{inject} into $\Z_p$,
-  a contradiction. 
-\end{proof}
+%\begin{prop}[$\Z_p$ Integral Domain]\link{prop:padic:ID}
+%  
+%  For all $x, y \in \Z_p$, $x y = 0$ implies $x = 0$ or $y = 0$. 
+%\end{prop}
+%\begin{proof}
+%  Follows from the norm being \linkto{prop:padic:normed_ring}{multipicative}
+%  and $\R$ being an integral domain. 
+%\end{proof}
+% \begin{proof}(Without using the norm)
+% 
+%   Let $x, y \in \Z_p$, $x \neq 0 \neq y$. 
+%   Then $x y = p^{v_p(x) + v_p(y)} u(x) u(y)$ 
+%   where $u(x), u(y) \in \Z_p^\times$ from 
+%   \linkto{prop:padic:decomp}{unique decomposition}. 
+%   Then $x y = 0$ yields $0 = p^{v_p(x) + v_p(y)}$, 
+%   which implies $\Z$ does not \linkto{prop:padic:inject}{inject} into $\Z_p$,
+%   a contradiction. 
+% \end{proof}
 
 \begin{prop}[Ultrametric Property]\link{prop:padic:ultrametric}
   
@@ -402,7 +372,7 @@ the intuition that higher order terms tend to zero.
     Give $\Z_p$ the subspace topology in $\dprod{n \in \N}{}\Z/p^n\Z$ with 
     the product topology from each $\Z/p^n\Z$ being discrete. 
     Then for all $x \in \Z_p$, 
-    the set of balls $\set{B_{p^{-n}(x)}}_{n \in \N}$ is 
+    the set of balls $\set{B_{p^{-n}}(x)}_{n \in \N}$ is 
     a prefilter that generates the neighbourhood filter of $x$
     (AKA a neighbourhood base). 
     That is to say, the topology from the norm is equal to 
@@ -446,38 +416,8 @@ the intuition that higher order terms tend to zero.
   Since every $\zmo{n}$ is discrete,
   this is a finite union of closed sets and hence is closed. 
 
-  $(3)$ In the following, let $\pi_k : \Z \to \Z/p^k\Z$ be the natural map. 
-  Let $x \in \Z_p$. 
-  For $k \in \N$, let $x_k \in \Z$ be unique such that 
-  $\pi_k(x_k) = \ep_k(x)$ and $0 \leq x_k < p^k$. 
-  There exists a unique $a^{(k)} : \N \to \set{0,\dots,p-1}$ such that 
-  $x_k = \dsum{l\in\N}{} a^{(k)}_l p^l$. 
-  Since $\pi_k(x_{k+1} - a^{(k+1)}(k) p^k) = \pi_k(x_{k+1})
-  = \fall{k}{k+1}\ep_{k+1}(x) = \ep_k(x) = x_k$
-  and $0 \leq x_{k+1} - a^{(k+1)}(k) p^k < p^k$,
-  we have $x_{k+1} = x_k + a^{(k+1)}(k) p^k$.
-  Therefore $a : \N \to \set{0,\dots,p-1}, k \mapsto a^{(k)}(k)$. 
-  The claim that $x = \dsum{k = 0}{\infty} a_k p^k$
-  is equivalent to $x = \lim_{k \to \infty} x_k$. 
-  Since the neighourhood filter of $x$ is generated by $B_{p^{-n}}(x)$,
-  it suffices $x_k$ converges into each of these balls. 
-  Let $n \in \N$. 
-  Then for $k \geq n + 1$, 
-  $\ep_{n+1}(x_k - x) = \fall{n+1}{k}\ep_k(x_k - x) = 0$.
-  Therefore $n < v_p(x_k - x)$, i.e. $x_k \in B_{p^{-n}}(x)$.
-  Hence, $x_k \to x$. 
-
-  Let $b : \N \to \set{0,\dots,p-1}$ such that 
-  $x = \dsum{k = 0}{\infty} b_kp^k$.
-  Then $\pi_1(a_0) = \ep_1(x) = \pi_1(b_0)$.
-  Since $0 \leq a_0,b_0 < p$, $a_0 = b_0$. 
-  For $k \in \N$, 
-  $\pi_{k+1}(a_{k}p^{k}) = \ep_{k+1}(x - \dsum{0 \leq l < k}{}a_lp^l)
-  = \ep_{k+1}(x - \dsum{0 \leq l < k}{}b_lp^l) = \pi_{k+1}(b_{k}p^{k})$
-  by induction.
-  Since $0 \leq a_k, b_k < p$, $a_k p^k = b_k p^k$ and hence $a_k = b_k$.
-  Therefore $a = b$. 
-
+  $(3)$ For $x \in \Z_p$, 
+  the sequence of truncations $\ep_n(x)$ converges to $x$. 
   A general power series in $p$ converges because 
   $\abs{a_k p^k}_p \leq \abs{p}_p^k = p^{-k} \to 0$,
   the \linkto{prop:padic:normed_ring}{ultrametric property} of the norm
@@ -497,17 +437,10 @@ the intuition that higher order terms tend to zero.
   the localization of $\Z_p$ with respect to the element $p$. 
 \end{prop}
 \begin{proof}
-  Since $p$ is invertible in $\Q_p$, 
-  there is a canonical $\Z_p$-algebra morphism from $(\Z_p)_p$ to $\Q_p$.
-  Since $\Z_p$ be an integral domain, 
-  $\Z_p$ injects into $\Q_p$ and thus $(\Z_p)_p$ injects into $\Q_p$ as well.
-  By \linkto{prop:padic:decomp}{unique decomposition},
-  every element of $\Q_p$ is of the form $(p^nu)/(p^m v)$ where 
-  $n, m \in \N$ and $u, v \in \Z_p^\times$. 
-  Therefore every element of $\Q_p$ is of the form $p^k w$
-  where $k \in \Z$ and $w \in \Z_p^\times$. 
-  This shows $(\Z_p)_p$ surjects onto $\Q_p$,
-  i.e. the canonical morphism from $(\Z_p)_p$ to $\Q_p$ is an isomorphism.
+  \linkto{prop:padic:local}{$\Z_p$ is local} with 
+  maximal ideal generated by $p$, 
+  so it suffices to invert $p$ to get the field of fractions. 
+  See \linkto{appendix}{appendix} for more details. 
 \end{proof}
 
 \begin{rmk}[Meaning of $\Q_p$]\link{rmk:padic:rat}
@@ -522,7 +455,7 @@ the intuition that higher order terms tend to zero.
   We extend the $p$-adic valuation to $\Q_p$ by : 
   \begin{align*}
     v_p : \map{\Q_p}{\N^\infty}{}{}, 
-    \frac{x}{p^n} \in (\Z_p)_p \mapsto v_p(x) - n
+    {x}/{p^n} \in (\Z_p)_p \mapsto v_p(x) - n
   \end{align*}
 
   From this, we extend the $p$-adic norm as well : 
@@ -550,29 +483,8 @@ the intuition that higher order terms tend to zero.
     Then $\Q$ is dense $\Q_p$.
   \end{enumerate}
 \end{prop}
-\begin{proof}~
-  
-  $(1)$ Same proof as for $\Z_p$.
-  
-  $(2)$ Since the norm of $\Q_p$ extends that of $\Z_p$, 
-  $\Z_p$ is homeomorphic to its canonical image in $\Q_p$. 
-  $\Z_p = B_{p}(0)$, since the image of $\abs{\hspace{5pt}}_p$ is discrete. 
-  For all points $x \in \Q_p$, 
-  the clopen ball of size $1$ around $x$ is homeomorphic to $\Z_p$ 
-  (by translation).
-  Hence every $x$ has a compact neighbourhood. 
-
-  $(3)$ Let $a : \N \to \Q_p$ be a cauchy sequence. 
-  Then there exists $N \in \N$ such that for all $n \geq N$, 
-  $a_n \in B_1(a_N) = a_N + \Z_p$. 
-  Since $\Z_p$ is complete and $B_1(a_N)$ is isometric to $\Z_p$,
-  $a_n$ converges in $B_1(a_N)$
-  and hence in $\Q_p$. 
-
-  $(4)$ follows from elements in $\Q_p$ being 
-  of \linkto{prop:padic:rat:localization}{the form $p^{-n} x$}
-  where $x \in \Z_p$ and 
-  \linkto{prop:padic:top_prop}{$\Z$ being dense in $\Z_p$}. 
+\begin{proof}
+  Not really relevant for four squares so see \linkto{appendix}{appendix}. 
 \end{proof}
 
 \subsection{\texorpdfstring{$p$-adic Equations}{TEXT}}
@@ -582,13 +494,271 @@ conditions to lift approximate solutions mod $p^n$ to solutions in $\Z_p$.
 This will be done via the $p$-adic analogue of 
 \linkto{prop:eqn:newton}{Newton's method}.
 
-\begin{prop}[Inverse Limit of Finite, Non-Empty System is Non-Empty]
+\begin{prop}[Mean Value Theorem for Polynomials]
+  \link{prop:poly:mvt}
+  Let $A$ be a commutative ring, $f \in A[X]$, $a \in A$. 
+  Then $f - f(a) = f'(a)(X - a)$ in $A[X]/(X-a)^2A[X]$. 
+\end{prop}
+\begin{proof}
+  If the result is true for $g, h \in A[X]$,
+  then it's true for $\la g + h$ where $\la \in A$. 
+  Therefore it suffices to show the result for monomial $X^n$. 
+  This follows from induction. 
+\end{proof}
+
+\begin{prop}[$p$-adic Newton's Method]\link{prop:eqn:newton}
+  
+  Let $f \in \Z_p[X]$, $x \in \Z_p$ such that 
+  \[
+    \abs{f(x)}_p < \abs{f'(x)}_p^2
+  \]
+  Then there exists $\bar{x} \in \Z_p$ such that 
+  \begin{enumerate}
+    \item $\abs{f(\bar{x})}_p \leq p^{-1}\abs{f(x)}_p$
+    \item $\abs{\bar{x} - x}_p \leq {\abs{f(x)}_p}/{\abs{f'(x)}_p}$
+    \item $\abs{f'(\bar{x})}_p = \abs{f'(x)}_p$
+  \end{enumerate}
+\end{prop}
+\begin{proof}
+  Let $\bar{x} \in \Z_p$ to be determined. 
+  Applying \linkto{prop:poly:mvt}{mean value theorem} yields \[
+    f(\bar{x}) 
+    = f(x) + f'(x)(\bar{x} - x) + a (\bar{x} - x)^2
+  \]
+  for some $a \in \Z_p$. 
+  Since $\abs{f'(x)}_p \neq 0$, 
+  we can choose $\bar{x} := x - f(x) / f'(x)$ as in the real case.
+  Then by the \linkto{prop:padic:normed_ring}{ultrametric property},
+  we have \begin{align*}
+    \abs{f(\bar{x})}_p 
+    &\leq \max\brkt{\abs{f(x) + f'(x)(\bar{x} - x)}_p, \abs{a (\bar{x} - x)^2}_p}
+    \leq \max\brkt{\abs{f(x) + f'(x)(\bar{x} - x)}_p, \abs{\bar{x} - x}_p^2} \\
+    &= \abs{f(x)}_p^2 \abs{f'(x)}_p^{-2} < \abs{f(x)}_p 
+    \implies \abs{f(\bar{x})}_p \leq p\inv \abs{f(x)}_p
+  \end{align*}
+  where we have used $\abs{\Z_p}_p = \set{1, p\inv, p^{-2}, \dots, 0}$.
+  It remains to show $\abs{f'(\bar{x})}_p = \abs{f'(x)}_p$.
+  To this end, we apply mean value theorem to $f'$ as obtain \[
+    f'(\bar{x})
+    = f'(x) + f''(x) f(x) {f'(x)}\inv 
+    + b f(x)^2 f'(x)^{-2}
+  \]
+  for some $b \in \Z_p$. 
+  \linkto{prop:padic:normed_ring}{It suffices} to show that 
+  the norms of the latter two terms are strictly smaller than $\abs{f'(x)}_p$.
+  This follows from the hypothesis : \begin{align*}
+    \abs{b \brkt{{f(x)}/{f'(x)}}^2}_p 
+    \leq {\abs{f(x)}_p^2}/{\abs{f'(x)}_p^2} 
+    < \abs{f(x)}_p < \abs{f'(x)}_p &&
+    \abs{f''(x) {f(x)}/{f'(x)}}_p 
+    \leq {\abs{f(x)}_p}/{\abs{f'(x)}_p}
+    < \abs{f'(x)}_p
+  \end{align*}
+
+\end{proof}
+
+\begin{prop}[Lifting Solutions / Generalized Hensel's Lemma]
+  \link{prop:eqn:lift}
+  
+  Let $1 \leq m$, $f \in \Z_p[X_1,\dots,X_m]$, $x \in \Z_p^m$ such that 
+  there exists $1 \leq j \leq m$ satisfying 
+  \[
+    \abs{f(x)}_p < \abs{\res{\del{f}{X_j}}{x}}_p^2
+  \]
+  Then there exists $y \in \Z_p^m$ such that 
+  $f(y) = 0$ and $
+    \max(\abs{\pi_i(y - x)}_p)_{1\leq i \leq m} 
+    \leq {\abs{f(x)}_p}/{\abs{\res{\del{f}{X_j}}{x}}_p}
+  $
+  where $\pi_i : \Z_p^m \to \Z_p$ takes the $i$-th component.
+\end{prop}
+\begin{proof}
+  We induct on $m$. 
+
+  Suppose $m = 1$. Define $x_0 := x$. 
+  Then $\abs{f(x_0)}_p < \abs{f'(x_0)}_p^2$, 
+  so by \linkto{prop:eqn:newton}{$p$-adic Newton's method} and induction, 
+  we have a sequence $x : \N \to \Z_p$ such that 
+  for all $k \in \N$, 
+  \begin{align*}
+    \abs{f(x_{k+1})}_p \leq p^{-1}\abs{f(x_k)}_p &&
+    \abs{x_{k+1} - x_k}_p 
+    \leq {\abs{f(x_k)}_p}/{\abs{f'(x_k)}_p} && 
+    \abs{f'(x_{k+1})}_p = \abs{f'(x_k)}_p
+  \end{align*}
+  We see that $\abs{f(x_{k})}_p \leq p^{-k}\abs{f(x_0)}_p$
+  and hence $\lim_{k\to\infty} f(x_k) = 0$. 
+  Furthermore, we have $\abs{x_{k+1} - x_k}_p \to 0$ as $k \to \infty$ so
+  by the \linkto{prop:padic:normed_ring}{ultrametric property} 
+  of $\abs{\hspace{5pt}}_p$, 
+  there exists $y \in \Z_p$ such that $\lim_{k\to\infty} x_k = y$. 
+  Since $\Z_p$ is a topological ring with topology from 
+  $\abs{\hspace{5pt}}_p$, 
+  the fact that $\Z_p \to \Z_p, x \mapsto f(x)$ is defined by finitely many 
+  additions and multiplications implies
+  it is continuous and hence
+  $f(y) = f(\lim_{k\to\infty} x_k) = \lim_{k\to\infty} f(x_k) = 0$.
+  For $k \in \N$, again by 
+  the \linkto{prop:padic:normed_ring}{ultrametric property} and 
+  induction on $k$,
+  we have
+  \[
+    \abs{x_{k+1} - x}_p 
+    \leq \max\brkt{\abs{x_{k+1} - x_k}_p, \abs{x_k - x}_p}
+    \leq \max\brkt{\frac{\abs{f(x_0)}_p}{p^k \abs{f'(x_0)}_p},
+    \frac{\abs{f(x_0)}_p}{\abs{f'(x_0)}_p}
+    }
+    \leq \frac{\abs{f(x_0)}_p}{\abs{f'(x_0)}_p}
+  \]
+  Taking limits, we obtain $
+    \abs{y - x}_p \leq {\abs{f(x_0)}_p}/{\abs{f'(x_0)}_p}
+  $
+  as desired. 
+
+  For $1 < m$, we reduce to the single variable case. 
+  Define $\bar{f}(X_j) := f(\pi_1(x),\dots,X_j,\dots,\pi_m(x)) \in \Z_p[X_j]$.
+  By the single variable case,
+  there exists $y_j \in \Z_p$ such that $\bar{f}(y_j) = 0$ and 
+  \[
+    \abs{y_j - \pi_j(x)}_p 
+    \leq {\abs{\bar{f}(\pi_j(x))}_p}/{\abs{\bar{f}'(\pi_j(x))}_p}
+    = {\abs{f(x)}_p}/{\abs{\res{\del{f}{X_j}}{x}}_p}
+  \]
+  Let $y = (\pi_1(x),\dots,y_j,\dots,\pi_m(x))\in \Z_p^m$.
+  Then $f(y) = \bar{f}(y_j) = 0$ and for all $1 \leq i \leq m$,
+  \[
+    \abs{\pi_i(y - x)}_p \begin{cases}
+      = 0 &\, i \neq j \\
+      \leq {\abs{f(x)}_p}/{\abs{\res{\del{f}{X_j}}{x}}_p} &\, i = j
+    \end{cases} 
+  \]
+\end{proof}
+
+\begin{prop}[Hensel's Lemma]\link{prop:eqn:hensel}
+  
+  Let $1 \leq m$, $f \in \Z_p[X_1,\dots,X_m]$, $x \in \Z_p^m$, 
+  $\ep_1(f(x)) = 0$, $1 \leq i \leq m$, $\ep_1(\res{\del{f}{X_i}}{x}) \neq 0$.
+  Then there exists $y \in \Z_p^m$ such that 
+  $f(y) = 0$ and $\ep_1^m(y - x) = 0$. 
+\end{prop}
+\begin{proof}
+  $\ep_1(f(x)) = 0$ is equivalent to $\abs{f(x)}_p \leq p\inv$
+  and $\ep_1(\res{\del{f}{X_i}}{x}) \neq 0$ is equivalent to 
+  $\abs{\res{\del{f}{X_i}}{x}}_p = 1$.
+  The conditions of \linkto{prop:eqn:lift}{lifting solutions} are satisfied,
+  hence we have $y \in \Z_p^m$ such that for all $1 \leq i \leq m$, 
+  \[
+    \max(\abs{\pi_i(y - x)}_p)_{1\leq i \leq m} 
+    \leq {\abs{f(x)}_p}/{\abs{\res{\del{f}{X_j}}{x}}_p}
+  \]
+  The inequality is equivalent to $\ep_1^m(y - x) = 0$. 
+\end{proof}
+
+\begin{rmk}
+  Since we are interested in the four square theorem, 
+  which essentially concerns a quadratic form, 
+  it will be useful to give specific conditions for 
+  lifting solutions to quadratic forms. 
+\end{rmk}
+
+\begin{prop}[Lifting Solutions of Quadratic Forms for $p \neq 2$]
+  \link{prop:eqn:lift:quad:p_neq_2}
+  
+  Let $p \neq 2$, $1 \leq m$, 
+  $f = \dsum{i,j = 1}{m} a_{ij}X_iX_j \in \Z_p[X_1,\dots,X_m]$ where 
+  $[a_{ij}]^\top = [a_{ij}]$ and $\det [a_{ij}] \in \Z_p^\times$
+  i.e. $f$ is a non-degenerate quadratic form. 
+  Let $a \in \Z_p$, $x \in \Z_p^m$ such that 
+  $x$ is primitive and $\ep_1(f(x)) = \ep_1(a)$. 
+  Then there exists $y \in \Z_p^m$ such that 
+  $f(y) = a$ and $\ep_1^m(y - x) = 0$. 
+\end{prop}
+\begin{proof}
+  By \linkto{prop:eqn:hensel}{Hensel's Lemma},
+  it suffices to give $1 \leq i \leq m$ such that 
+  $\ep_1(\res{\del{f}{X_i}}{x}) \neq 0$. 
+  Taking the derivative of $f$, 
+  evaluating at $x$ and reducing mod $p$ yields 
+  the following linear system : 
+  \begin{align*}
+    \sqbrkt{\ep_1\brkt{\res{\del{f}{X_i}}{x}}}_{i = 1}^m 
+    = 2 [\ep_1(a_{ij})]_{i,j = 1}^m \ep_1(x)
+  \end{align*}
+  Since $\det [a_{ij}] \in \Z_p^\times$, 
+  $\det [\ep_1(a_{ij})]_{i,j = 1}^m \neq 0$.
+  The matrix is hence invertible and since 
+  $\ep_1(x) \neq 0$ by definition of \linkto{dfn:padic:prim}{primitivity},
+  there exists a desired $1 \leq i \leq m$. 
+\end{proof}
+
+\begin{prop}[Lifting Solutions of Quadratic Forms for $p = 2$]
+  \link{prop:eqn:lift:quad:p_eq_2}
+  
+  Let $p = 2$, $1 \leq m$, 
+  $f = \dsum{i,j = 1}{m} a_{ij}X_iX_j \in \Z_p[X_1,\dots,X_m]$ where 
+  $[a_{ij}]^\top = [a_{ij}]$, i.e. $f$ is a quadratic form. 
+  Let $a \in \Z_2$, $x \in \Z_2^m$ such that 
+  $x$ is primitive and $\ep_3(f(x)) = \ep_3(a)$. 
+  Then \begin{enumerate}
+    \item Let $1 \leq i \leq m$ where 
+    $\ep_2\brkt{\res{\del{f}{X_i}}{x}} \neq 0$.
+    Then there exists $y \in \Z_2^m$ such that $f(y) = a$ and 
+    $\ep_3(y - x) = 0$. 
+    \item The condition of $(1)$ is satisfied when 
+    $\det\sqbrkt{a_{ij}}_{i,j = 1}^m \in \Z_2^\times$. 
+  \end{enumerate}
+\end{prop}
+\begin{proof}~
+
+  $(1)$
+  $\ep_3(f(x)) = \ep_3(a)$ and 
+  $\ep_2\brkt{\res{\del{f}{X_i}}{x}} \neq 0$ are respectively equivalent to
+  $\abs{f(x) - a}_p \leq p^{-3}$ and $p\inv \leq \abs{\res{\del{f}{X_i}}{x}}_p$.
+  Hence \[
+    \abs{f(x) - a}_p < \abs{\res{\del{f}{X_i}}{x}}_p^2
+  \]
+  So by \linkto{prop:eqn:lift}{lifting solutions}, 
+  there exists $y \in \Z_p^m$ such that 
+  $f(y) = a$ and \[
+    \max(\abs{\pi_i(y - x)}_p)_{1\leq i \leq m} 
+    \leq {\abs{f(x) - a}_p}/{\abs{\res{\del{f}{X_j}}{x}}_p}
+  \]
+  By taking the derivative of $f$, evaluating at $x$ and 
+  reducing mod $2$, we have $\ep_1\brkt{\res{\del{f}{X_i}}{x}} = 0$ 
+  and hence its valuation is $1$.
+  We thus obtain \[
+    \max(\abs{\pi_i(y - x)}_p)_{1\leq i \leq m} 
+    \leq p^{-2}
+  \]
+  This is equivalent to $\ep_2(y - x) = 0$.
+
+  $(2)$ This follows from taking the derivative of $f$,
+  evaluating at $x$ and reducing mod $4$, we have 
+  \begin{align*}
+    \sqbrkt{\ep_2\brkt{\res{\del{f}{X_i}}{x}}}_{i = 1}^m 
+    = 2 [\ep_2(a_{ij})]_{i,j = 1}^m \ep_2(x)
+  \end{align*}
+  Since $\det [a_{ij}]_{i,j = 1}^m \in \Z_2^\times$, 
+  $\det [\ep_2(a_{ij})]_{i,j = 1}^m \in \zmo[2]{2}^\times$,
+  the fact that $\ep_2(x)$ is not a multiple of $2$ implies the tuple
+  $[\ep_2(a_{ij})]_{i,j = 1}^m \ep_2(x)$ is not a multiple of $2$.
+  The existence of $i$ such that $\ep_2\brkt{\res{\del{f}{X_i}}{x}} \neq 0$
+  follows. 
+\end{proof}
+
+\begin{rmk}
+  When solving $f(x) = 0$, 
+  we would often like to ignore the trivial solution $x = 0$ if it exists. 
+  So we give a characterisation for non-trivial solutions to exist. 
+\end{rmk}
+
+\begin{lem}[Inverse Limit of Finite, Non-Empty System is Non-Empty]
   \link{prop:inv_lim:nonempty}
   
-  Let $D : \N\op \to \SET$ be a projective system 
+  Let $D : \N\op \to \SET$ be a projective system of sets 
   such that for all $n\in \N$, $D_n$ is finite and non-empty. 
   Then $\LIM D $ is nonempty. 
-\end{prop}
+\end{lem}
 \begin{proof}
   If $D$ is a surjective system, then $\LIM D $ is non-empty. 
   We will reduce to this case. 
@@ -702,15 +872,15 @@ This will be done via the $p$-adic analogue of
   $x$ is called primitive when $(\fall{1}{n})^m x \neq 0$. 
 \end{dfn}
 
-\begin{dfn}[Homogeneous Polynomials]\link{dfn:homogen}
-  
-  Let $1 \leq m$, $A$ be a commutative ring,
-  $f \in A[X_1,\dots,X_m]$. 
-  Then $f$ is called \emph{homogeneous} when 
-  for all $\la \in A$, $f(\la X) = \la^{\deg f} f(X)$.
-  Equivalently, all monomials in $f$ with non-zero coefficients 
-  have the same degree. 
-\end{dfn}
+% \begin{dfn}[Homogeneous Polynomials]\link{dfn:homogen}
+%   
+%   Let $1 \leq m$, $A$ be a commutative ring,
+%   $f \in A[X_1,\dots,X_m]$. 
+%   Then $f$ is called \emph{homogeneous} when 
+%   for all $\la \in A$, $f(\la X) = \la^{\deg f} f(X)$.
+%   Equivalently, all monomials in $f$ with non-zero coefficients 
+%   have the same degree. 
+% \end{dfn}
 
 \begin{prop}[$\Q_p$, $\Z_p$ Points of Projective Varieties]
   \link{prop:eqn:rat_pts}
@@ -768,285 +938,9 @@ This will be done via the $p$-adic analogue of
   the set of primitives in $\V_{\Z_p}\brkt{I}$.
 \end{proof}
 
-\begin{prop}[Mean Value Theorem for Polynomials]
-  \link{prop:poly:mvt}
-  Let $A$ be a commutative ring, $f \in A[X]$, $a \in A$. 
-  Then $f - f(a) = f'(a)(X - a)$ in $A[X]/(X-a)^2A[X]$. 
-\end{prop}
-\begin{proof}
-  If the result is true for $g, h \in A[X]$,
-  then it's true for $\la g + h$ where $\la \in A$. 
-  Therefore it suffices to show the result for monomial $X^n$. 
-  This follows from induction. 
-\end{proof}
+\subsection{Appendix : Omitted Proofs}\link{appendix}
 
-\begin{prop}[$p$-adic Newton's Method]\link{prop:eqn:newton}
-  
-  Let $f \in \Z_p[X]$, $x \in \Z_p$ such that 
-  \[
-    \abs{f(x)}_p < \abs{f'(x)}_p^2
-  \]
-  Then there exists $\bar{x} \in \Z_p$ such that 
-  \begin{enumerate}
-    \item $\abs{f(\bar{x})}_p \leq p^{-1}\abs{f(x)}_p$
-    \item $\abs{\bar{x} - x}_p \leq \frac{\abs{f(x)}_p}{\abs{f'(x)}_p}$
-    \item $\abs{f'(\bar{x})}_p = \abs{f'(x)}_p$
-  \end{enumerate}
-\end{prop}
-\begin{proof}
-  If $f(x) = 0$, then pick $\bar{x} = x$. 
-  So WLOG $0 < \abs{f(x)}_p$. 
-  Note that since all $p$-adic integers have 
-  norm $\leq 1$, we have $\abs{f(x)}_p < \abs{f'(x)}_p$. 
-  Then $1 < \abs{f'(x)}_p \abs{f(x)}_p\inv \in p\Z \subs p\Z_p$. 
-  Define \[
-    \bar{x} := x + \frac{\abs{f'(x)}_p}{\abs{f(x)}_p} y
-  \]
-  for some $y \in \Z_p$ to be determined. 
-  Then by applying mean value theorem to $f$, we have \begin{align*}
-    f(\bar{x}) 
-    &= f(x) + f'(x)(\bar{x} - x) + a_0 (\bar{x} - x)^2 \\
-    &= f(x) + f'(x) y \abs{f'(x)}_p \abs{f(x)}_p\inv
-    + a \abs{f'(x)}_p^2 \abs{f(x)}_p^{-2}
-  \end{align*}
-  for some $a, a_0 \in \Z_p$.
-  By definition of $\abs{\hspace{5pt}}_p$, 
-  the \linkto{prop:padic:top_prop}{topology of $\Z_p$} and 
-  \linkto{prop:padic:decomp}{unique decomposition}, 
-  $f(x) = b \abs{f(x)}_p\inv$ for some $b \in \Z_p^\times$
-  and $f'(x) = c \abs{f'(x)}_p\inv$ for some $c \in \Z_p^\times$.
-  We thus have \[
-    f(\bar{x}) = \brkt{b + y c}\abs{f(x)}_p\inv 
-    + a \abs{f'(x)}_p^2 \abs{f(x)}_p^{-2}
-  \]
-  Choosing $y := -bc\inv$, we obtain : 
-  \begin{align*}
-    &\abs{f(\bar{x})}_p = \abs{a \abs{f'(x)}_p^2 \abs{f(x)}_p^{-2}}_p
-    \leq \abs{f(x)}_p^2 \abs{f'(x)}_p^{-2} < \abs{f(x)}_p 
-    \implies \abs{f(\bar{x})}_p \leq p\inv \abs{f(x)}_p \\
-    &\abs{f'(x)}_p \abs{\bar{x} - x}_p
-    = \abs{f(\bar{x}) - f(x) - a_0 (\bar{x}-x)^2}_p
-    \leq \max(\abs{f(\bar{x})}_p,\abs{f(x)_p},\abs{a_0 (\bar{x}-x)^2}_p)
-    = \abs{f(x)}_p 
-  \end{align*}
-  The implication followed from 
-  $\abs{\Z_p}_p = \set{1, p\inv, p^{-2}, \dots, 0}$.
-  It remains to show $\abs{f'(\bar{x})}_p = \abs{f'(x)}_p$. 
-  By applying \linkto{prop:poly:mvt}{mean value theorem} to $f'$, 
-  we have for some $d, e \in \Z_p$, \begin{align*}
-    f'(\bar{x})
-    &= f'(x) + f''(x) y \abs{f'(x)}_p\abs{f(x)}_p\inv 
-    + d  \abs{f'(x)}_p^2 \abs{f(x)}_p^{-2} \\
-    &= \abs{f'(x)}_p\inv (c + e \abs{f'(x)}^2\abs{f(x)}_p\inv 
-    + d \abs{f'(x)}_p^3 \abs{f(x)}_p^{-2}) 
-  \end{align*}
-  Since $\abs{e \abs{f'(x)}^2\abs{f(x)}_p\inv}_p \leq 
-  \abs{f(x)}\abs{f'(x)}_p^{-2} < 1$ and 
-  $\abs{d \abs{f'(x)}_p^3 \abs{f(x)}_p^{-2}}_p \leq 
-  \abs{f(x)}_p^{2} \abs{f'(x)}_p^{-4} < 1$,
-  the term being multiplied by $\abs{f'(x)}_p\inv$ is still a unit, 
-  and hence norm $1$. 
-  It then follows from taking norms that 
-  $\abs{f'(\bar{x})}_p = \abs{\abs{f'(x)}_p\inv}_p = \abs{f'(x)}_p$.
-\end{proof}
-
-\begin{prop}[Lifting Solutions / Generalized Hensel's Lemma]
-  \link{prop:eqn:lift}
-  
-  Let $1 \leq m$, $f \in \Z_p[X_1,\dots,X_m]$, $x \in \Z_p^m$ such that 
-  there exists $1 \leq j \leq m$ satisfying 
-  \[
-    \abs{f(x)}_p < \abs{\res{\del{f}{X_j}}{x}}_p^2
-  \]
-  Then there exists $y \in \Z_p^m$ such that 
-  $f(y) = 0$ and 
-  \[
-    \max(\abs{\pi_i(y - x)}_p)_{1\leq i \leq m} 
-    \leq \frac{\abs{f(x)}_p}{\abs{\res{\del{f}{X_j}}{x}}_p}
-  \]
-  where $\pi_i : \Z_p^m \to \Z_p$ takes the $i$-th component.
-\end{prop}
-\begin{proof}
-  We induct on $m$. 
-
-  Suppose $m = 1$. Define $x_0 := x$. 
-  Then $\abs{f(x_0)}_p < \abs{f'(x_0)}_p^2$, 
-  so by \linkto{prop:eqn:newton}{$p$-adic Newton's method}, 
-  we have $x_1 \in \Z_p$ such that 
-  \begin{align*}
-    \abs{f(x_1)}_p \leq p^{-1}\abs{f(x_0)}_p , &&
-    \abs{x_1 - x_0}_p 
-    \leq \frac{\abs{f(x_0)}_p}{\abs{f'(x_0)}_p} , &&
-    \abs{f'(x_1)}_p = \abs{f'(x_0)}_p 
-  \end{align*}
-  Then $\abs{f(x_1)}_p < \abs{f'(x_1)}_p^2$. 
-  By induction, we have a sequence $x : \N \to \Z_p$ such that 
-  for all $k \in \N$, 
-  \begin{align*}
-    \abs{f(x_{k+1})}_p \leq p^{-1}\abs{f(x_k)}_p 
-    \leq p^{-(k+1)} \abs{f(x_0)}_p ,  &&
-    \abs{x_{k+1} - x_k}_p 
-    \leq \frac{\abs{f(x_k)}_p}{\abs{f'(x_k)}_p} , && 
-    \abs{f'(x_{k+1})}_p = \abs{f'(x_k)}_p
-  \end{align*}
-  We see that 
-  $\lim_{k\to\infty} f(x_k) = 0$. 
-  Furthermore, from the \linkto{prop:padic:normed_ring}{ultrametric property} 
-  of $\abs{\hspace{5pt}}_p$, 
-  there exists $y \in \Z_p$ such that $\lim_{k\to\infty} x_k = y$. 
-  Since $\Z_p$ is a topological ring with topology from 
-  $\abs{\hspace{5pt}}_p$, 
-  the fact that $\Z_p \to \Z_p, x \mapsto f(x)$ is defined by finitely many 
-  additions and multiplications implies
-  it is continuous and hence
-  $f(y) = f(\lim_{k\to\infty} x_k) = \lim_{k\to\infty} f(x_k) = 0$.
-  For $k \in \N$, again by 
-  the \linkto{prop:padic:normed_ring}{ultrametric property} and 
-  induction on $k$,
-  we have
-  \[
-    \abs{x_{k+1} - x}_p 
-    \leq \max\brkt{\abs{x_{k+1} - x_k}_p, \abs{x_k - x}_p}
-    \leq \max\brkt{\frac{\abs{f(x_0)}_p}{p^k \abs{f'(x_0)}_p},
-    \frac{\abs{f(x_0)}_p}{\abs{f'(x_0)}_p}
-    }
-    \leq \frac{\abs{f(x_0)}_p}{\abs{f'(x_0)}_p}
-  \]
-  Taking limits, we obtain \[
-    \abs{y - x}_p \leq \frac{\abs{f(x_0)}_p}{\abs{f'(x_0)}_p}
-  \]
-  as desired. 
-
-  For $1 < m$, we reduce to the single variable case. 
-  Define $\bar{f}(X_j) := f(\pi_1(x),\dots,X_j,\dots,\pi_m(x)) \in \Z_p[X_j]$.
-  By the single variable case,
-  there exists $y_j \in \Z_p$ such that $\bar{f}(y_j) = 0$ and 
-  \[
-    \abs{y_j - \pi_j(x)}_p 
-    \leq \frac{\abs{\bar{f}(\pi_j(x))}_p}{\abs{\bar{f}'(\pi_j(x))}_p}
-    = \frac{\abs{f(x)}_p}{\abs{{f}'(x)}_p}
-  \]
-  Let $y = (\pi_1(x),\dots,y_j,\dots,\pi_m(x))\in \Z_p^m$.
-  Then $f(y) = \bar{f}(y_j) = 0$ and for all $1 \leq i \leq m$,
-  \[
-    \abs{\pi_i(y - x)}_p \begin{cases}
-      = 0 &\, i \neq j \\
-      \leq \frac{\abs{f(x)}_p}{\abs{f'(x)}_p} &\, i = j
-    \end{cases} 
-  \]
-\end{proof}
-
-\begin{prop}[Hensel's Lemma]\link{prop:eqn:hensel}
-  
-  Let $1 \leq m$, $f \in \Z_p[X_1,\dots,X_m]$, $x \in \Z_p^m$, 
-  $\ep_1(f(x)) = 0$, $1 \leq i \leq m$, $\ep_1(\res{\del{f}{X_i}}{x}) \neq 0$.
-  Then there exists $y \in \Z_p^m$ such that 
-  $f(y) = 0$ and $\ep_1^m(y - x) = 0$. 
-\end{prop}
-\begin{proof}
-  $\ep_1(f(x)) = 0$ is equivalent to $\abs{f(x)}_p \leq p\inv$
-  and $\ep_1(\res{\del{f}{X_i}}{x}) \neq 0$ is equivalent to 
-  $\abs{\res{\del{f}{X_i}}{x}}_p = 1$.
-  The conditions of \linkto{prop:eqn:lift}{lifting solutions} are satisfied,
-  hence we have $y \in \Z_p^m$ such that for all $1 \leq i \leq m$, 
-  \[
-    \max(\abs{\pi_i(y - x)}_p)_{1\leq i \leq m} 
-    \leq \frac{\abs{f(x)}_p}{\abs{\res{\del{f}{X_j}}{x}}_p}
-  \]
-  The inequality is equivalent to $\ep_1^m(y - x) = 0$. 
-\end{proof}
-
-\begin{prop}[Lifting Solutions of Quadratic Forms for $p \neq 2$]
-  \link{prop:eqn:lift:quad:p_neq_2}
-  
-  Let $p \neq 2$, $1 \leq m$, 
-  $f = \dsum{i,j = 1}{m} a_{ij}X_iX_j \in \Z_p[X_1,\dots,X_m]$ where 
-  \begin{enumerate}
-    \item $[a_{ij}]^\top = [a_{ij}]$
-    \item $\det [a_{ij}] \in \Z_p^\times$
-  \end{enumerate}
-  i.e. $f$ is a non-degenerate quadratic form. 
-  Let $a \in \Z_p$, $x \in \Z_p^m$ such that 
-  $x$ is primitive and $\ep_1(f(x)) = \ep_1(a)$. 
-  Then there exists $y \in \Z_p^m$ such that 
-  $f(y) = a$ and $\ep_1^m(y - x) = 0$. 
-\end{prop}
-\begin{proof}
-  By \linkto{prop:eqn:hensel}{Hensel's Lemma},
-  it suffices to give $1 \leq i \leq m$ such that 
-  $\ep_1(\res{\del{f}{X_i}}{x}) \neq 0$. 
-  Taking the derivative of $f$, 
-  evaluating at $x$ and reducing mod $p$ yields 
-  the following linear system : 
-  \begin{align*}
-    \sqbrkt{\ep_1\brkt{\res{\del{f}{X_i}}{x}}}_{i = 1}^m 
-    = 2 [\ep_1(a_{ij})]_{i,j = 1}^m \ep_1(x)
-  \end{align*}
-  Since $\det [a_{ij}] \in \Z_p^\times$, 
-  $\det [\ep_1(a_{ij})]_{i,j = 1}^m \neq 0$.
-  The matrix is hence invertible and since 
-  $\ep_1(x) \neq 0$ by definition of \linkto{dfn:padic:prim}{primitivity},
-  there exists a desired $1 \leq i \leq m$. 
-\end{proof}
-
-\begin{prop}[Lifting Solutions of Quadratic Forms for $p = 2$]
-  \link{prop:eqn:lift:quad:p_eq_2}
-  
-  Let $p = 2$, $1 \leq m$, 
-  $f = \dsum{i,j = 1}{m} a_{ij}X_iX_j \in \Z_p[X_1,\dots,X_m]$ where 
-  $[a_{ij}]^\top = [a_{ij}]$, i.e. $f$ is a quadratic form. 
-  Let $a \in \Z_2$, $x \in \Z_2^m$ such that 
-  $x$ is primitive and $\ep_3(f(x)) = \ep_3(a)$. 
-  Then \begin{enumerate}
-    \item Let $1 \leq i \leq m$ where 
-    $\ep_2\brkt{\res{\del{f}{X_i}}{x}} \neq 0$.
-    Then there exists $y \in \Z_2^m$ such that $f(y) = a$ and 
-    $\ep_3(y - x) = 0$. 
-    \item The condition of $(1)$ is satisfied when 
-    $\det\sqbrkt{a_{ij}}_{i,j = 1}^m \in \Z_2^\times$. 
-  \end{enumerate}
-\end{prop}
-\begin{proof}~
-
-  $(1)$
-  $\ep_3(f(x)) = \ep_3(a)$ and 
-  $\ep_2\brkt{\res{\del{f}{X_i}}{x}} \neq 0$ are respectively equivalent to
-  $\abs{f(x) - a}_p \leq p^{-3}$ and $p\inv \leq \abs{\res{\del{f}{X_i}}{x}}_p$.
-  Hence \[
-    \abs{f(x) - a}_p < \abs{\res{\del{f}{X_i}}{x}}_p^2
-  \]
-  So by \linkto{prop:eqn:lift}{lifting solutions}, 
-  there exists $y \in \Z_p^m$ such that 
-  $f(y) = a$ and \[
-    \max(\abs{\pi_i(y - x)}_p)_{1\leq i \leq m} 
-    \leq \frac{\abs{f(x) - a}_p}{\abs{\res{\del{f}{X_j}}{x}}_p}
-  \]
-  By taking the derivative of $f$, evaluating at $x$ and 
-  reducing mod $2$, we have $\ep_1\brkt{\res{\del{f}{X_i}}{x}} = 0$ 
-  and hence its valuation is $1$.
-  We thus obtain \[
-    \max(\abs{\pi_i(y - x)}_p)_{1\leq i \leq m} 
-    \leq p^{-2}
-  \]
-  This is equivalent to $\ep_2(y - x) = 0$.
-
-  $(2)$ This follows from taking the derivative of $f$,
-  evaluating at $x$ and reducing mod $4$, we have 
-  \begin{align*}
-    \sqbrkt{\ep_2\brkt{\res{\del{f}{X_i}}{x}}}_{i = 1}^m 
-    = 2 [\ep_2(a_{ij})]_{i,j = 1}^m \ep_2(x)
-  \end{align*}
-  Since $\det [a_{ij}]_{i,j = 1}^m \in \Z_2^\times$, 
-  $\det [\ep_2(a_{ij})]_{i,j = 1}^m \in \zmo[2]{2}^\times$,
-  the fact that $\ep_2(x)$ is not a multiple of $2$ implies the tuple
-  $[\ep_2(a_{ij})]_{i,j = 1}^m \ep_2(x)$ is not a multiple of $2$.
-  The existence of $i$ such that $\ep_2\brkt{\res{\del{f}{X_i}}{x}} \neq 0$
-  follows. 
-\end{proof}
-
-\subsection{Appendix : Omitted Proofs}
-
-\begin{proof}(\linkto{prop:inv_lim:left_surj_imp_right_exact}{
+\begin{proof}~(\linkto{prop:inv_lim:left_surj_imp_right_exact}{
   Left Surjective implies Right Exactness of Inverse Limit
 } - from Atiyah)
 
@@ -1092,6 +986,35 @@ This will be done via the $p$-adic analogue of
   $\LIM A, \LIM B, \LIM C$ are respectively the kernels of $d^A, d^B, d^C$
   and that $A$ surjective implies the zero module $0$ is the cokernel of $d^A$.
   The result follows. 
+\end{proof}
+
+\begin{proof}(\linkto{prop:padic:inject}{$\Z$ injects into $\Z_p$})
+  
+  We have a short exact sequence of projective systems of $\Z$-modules, 
+  \begin{figure}[H]
+    \centering
+    \begin{tikzcd}
+      0 \arrow[r] & p^\star\Z \arrow[r] 
+      & \underline{\Z} \arrow[r] & \Z/p^\star\Z \arrow[r] & 0
+    \end{tikzcd}
+  \end{figure}
+  where the middle projective system is a constant at $\Z$. 
+  Since \linkto{prop:inv_lim:left_surj_imp_right_exact}{
+  taking inverse limits is left exact}, we obtain the following 
+  exact sequence of $\Z$ modules : 
+  \begin{figure}[H]
+    \centering
+    \begin{tikzcd}
+      0 \arrow[r] & \LIM p^\star\Z \arrow[r] 
+      & \Z \arrow[r] & \LIM \Z/p^\star\Z
+    \end{tikzcd}
+  \end{figure} 
+  Since the forgetful functor from the category of rings to 
+  $\Z$-modules is a right adjoint functor, it preserves limits.
+  In particular, 
+  the inverse limit of $\Z/p^\star\Z$ in the category of $\Z$-modules is 
+  still $\Z_p$.
+  It is easy to check that the inverse limit of $p^\star\Z$ is the intersection.
 \end{proof}
 
 \begin{proof}~(\linkto{prop:padic:truncation}{Truncation} - from Serre)
@@ -1172,3 +1095,119 @@ This will be done via the $p$-adic analogue of
   for all $n$, $\ep_n(y) = y_n$.
   Then $x y = 1$, i.e. $x \in \Z_p^\times$. 
 \end{proof}
+
+\begin{proof}~(\linkto{prop:paidc:normed_ring}
+  {$(\Z_p,\abs{\hspace{5pt}}_p)$ Normed Ring})
+  
+  $(1)$ Clear. 
+
+  $(2)$ It suffices to show $v_p(x y) = v_p(x) + v_p(y)$. 
+  This follows from the result on 
+  \linkto{prop:padic:decomp}{unique decomposition}.
+
+  $(3)$ It suffices to show $\min(v_p(x),v_p(y)) \leq v_p(x + y)$ 
+  and that $v_p(x) \neq v_p(y)$ implies equality. 
+  In the following, let $n = \min(v_p(x),v_p(y))$.
+  Then from \linkto{prop:padic:decomp}{unique decomposition}, 
+  $x + y = p^n (p^{v_p(x) - n}u_x + p^{v_p(y) - n}u_y)$.
+  This shows $\ep_n(x + y) = 0$, and by maximality of $v_p(x+y)$,
+  $n \leq v_p(x + y)$. 
+  Now suppose $v_p(x) \neq v_p(y)$, WLOG $v_p(x) < v_p(y)$.
+  Then $p^{v_p(x) - n}u_x + p^{v_p(y) - n}u_y = u_x + p z$ where $z \in \Z_p$
+  implies it is a unit by \linkto{prop:padic:local}{$\Z_p$ is a local ring}.
+  Since units have valuation $1$, $v_p(x + y) = v_p(p^n) \cdot 1 = n$. 
+
+  $(4)$ $v_p(1) = 0$ since $1$ is a unit. 
+\end{proof}
+
+\begin{proof}~(\linkto{prop:padic:top_prop}{
+  $p$-adic Integers are Power Series in $p$
+})
+
+  In the following, let $\pi_k : \Z \to \Z/p^k\Z$ be the natural map. 
+  Let $x \in \Z_p$. 
+  For $k \in \N$, let $x_k \in \Z$ be unique such that 
+  $\pi_k(x_k) = \ep_k(x)$ and $0 \leq x_k < p^k$. 
+  There exists a unique $a^{(k)} : \N \to \set{0,\dots,p-1}$ such that 
+  $x_k = \dsum{l\in\N}{} a^{(k)}_l p^l$. 
+  Since $\pi_k(x_{k+1} - a^{(k+1)}(k) p^k) = \pi_k(x_{k+1})
+  = \fall{k}{k+1}\ep_{k+1}(x) = \ep_k(x) = x_k$
+  and $0 \leq x_{k+1} - a^{(k+1)}(k) p^k < p^k$,
+  we have $x_{k+1} = x_k + a^{(k+1)}(k) p^k$.
+  Therefore $a : \N \to \set{0,\dots,p-1}, k \mapsto a^{(k)}(k)$. 
+  The claim that $x = \dsum{k = 0}{\infty} a_k p^k$
+  is equivalent to $x = \lim_{k \to \infty} x_k$. 
+  Since the neighourhood filter of $x$ is generated by $B_{p^{-n}}(x)$,
+  it suffices $x_k$ converges into each of these balls. 
+  Let $n \in \N$. 
+  Then for $k \geq n + 1$, 
+  $\ep_{n+1}(x_k - x) = \fall{n+1}{k}\ep_k(x_k - x) = 0$.
+  Therefore $n < v_p(x_k - x)$, i.e. $x_k \in B_{p^{-n}}(x)$.
+  Hence, $x_k \to x$. 
+
+  Let $b : \N \to \set{0,\dots,p-1}$ such that 
+  $x = \dsum{k = 0}{\infty} b_kp^k$.
+  Then $\pi_1(a_0) = \ep_1(x) = \pi_1(b_0)$.
+  Since $0 \leq a_0,b_0 < p$, $a_0 = b_0$. 
+  For $k \in \N$, 
+  $\pi_{k+1}(a_{k}p^{k}) = \ep_{k+1}(x - \dsum{0 \leq l < k}{}a_lp^l)
+  = \ep_{k+1}(x - \dsum{0 \leq l < k}{}b_lp^l) = \pi_{k+1}(b_{k}p^{k})$
+  by induction.
+  Since $0 \leq a_k, b_k < p$, $a_k p^k = b_k p^k$ and hence $a_k = b_k$.
+  Therefore $a = b$. 
+\end{proof}
+
+\begin{proof}~(\linkto{
+  prop:padic:rat:localization
+}{$\Q_p$ as Localizing $\Z_p$ at $p$})
+  
+  Since $p$ is invertible in $\Q_p$, 
+  there is a canonical $\Z_p$-algebra morphism from $(\Z_p)_p$ to $\Q_p$.
+  Since $\Z_p$ be an integral domain, 
+  $\Z_p$ injects into $\Q_p$ and thus $(\Z_p)_p$ injects into $\Q_p$ as well.
+  By \linkto{prop:padic:decomp}{unique decomposition},
+  every element of $\Q_p$ is of the form $(p^nu)/(p^m v)$ where 
+  $n, m \in \N$ and $u, v \in \Z_p^\times$. 
+  Therefore every element of $\Q_p$ is of the form $p^k w$
+  where $k \in \Z$ and $w \in \Z_p^\times$. 
+  This shows $(\Z_p)_p$ surjects onto $\Q_p$,
+  i.e. the canonical morphism from $(\Z_p)_p$ to $\Q_p$ is an isomorphism.
+\end{proof}
+
+\begin{proof}~(
+  \linkto{prop:padic:rat:top_prop}{Topological Properties of $\Q_p$}
+)
+  
+  $(1)$ Same proof as for $\Z_p$.
+  
+  $(2)$ Since the norm of $\Q_p$ extends that of $\Z_p$, 
+  $\Z_p$ is homeomorphic to its canonical image in $\Q_p$. 
+  $\Z_p = B_{p}(0)$, since the image of $\abs{\hspace{5pt}}_p$ is discrete. 
+  For all points $x \in \Q_p$, 
+  the clopen ball of size $1$ around $x$ is homeomorphic to $\Z_p$ 
+  (by translation).
+  Hence every $x$ has a compact neighbourhood. 
+
+  $(3)$ Let $a : \N \to \Q_p$ be a cauchy sequence. 
+  Then there exists $N \in \N$ such that for all $n \geq N$, 
+  $a_n \in B_1(a_N) = a_N + \Z_p$. 
+  Since $\Z_p$ is complete and $B_1(a_N)$ is isometric to $\Z_p$,
+  $a_n$ converges in $B_1(a_N)$
+  and hence in $\Q_p$. 
+
+  $(4)$ follows from elements in $\Q_p$ being 
+  of \linkto{prop:padic:rat:localization}{the form $p^{-n} x$}
+  where $x \in \Z_p$ and 
+  \linkto{prop:padic:top_prop}{$\Z$ being dense in $\Z_p$}. 
+\end{proof}
+
+\subsection{Appendix : Category Theoretic Results Used}
+
+\begin{itemize}
+  \item[--] Category of diagrams $\CC^\II$.
+  \item[--] $\CC$ abelian category implies $\CC^\II$ abelian category. 
+  \item[--] Limits commute with limits. 
+  \item[--] Right adjoint commutes with limits. 
+  \item[--] Snake Lemma. 
+  \item[--] 
+\end{itemize}
